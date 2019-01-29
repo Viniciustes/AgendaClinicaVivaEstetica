@@ -1,0 +1,40 @@
+﻿@model MarcacaoViewModel
+
+@{
+    ViewData["Title"] = "Apagar";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Tem certeza que deseja apagar a marcação?</h3>
+<div>
+    <h4>Marcações</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Marcacao.Cliente.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Marcacao.Cliente.Nome)
+        </dd>
+        <dt>
+            Data da marcação
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Marcacao.DataMarcacao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Marcacao.Cliente.Celular)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Marcacao.Cliente.Celular)
+        </dd>
+
+    </dl>
+
+    <form asp-action="Apagar">
+        <input type="hidden" asp-for="Marcacao.IdMarcacao" />
+        <input type="submit" value="Apagar" class="btn btn-default" /> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>

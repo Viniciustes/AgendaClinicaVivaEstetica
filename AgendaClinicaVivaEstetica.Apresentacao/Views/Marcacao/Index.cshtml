@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MarcacaoViewModel>
+
+@{
+    ViewData["Title"] = "Marcação de agendamento";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Agendar">Marcar novo agendamento</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Data da marcação
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clientes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marcacao.DataMarcacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marcacao.Cliente.Nome)
+            </td>
+            <td>
+                <a asp-action="Editar" asp-route-id="@item.Marcacao.IdMarcacao">Editar</a> |
+                <a asp-action="Detalhar" asp-route-id="@item.Marcacao.IdMarcacao">Detalhar</a> |
+                <a asp-action="Apagar" asp-route-id="@item.Marcacao.IdMarcacao">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
