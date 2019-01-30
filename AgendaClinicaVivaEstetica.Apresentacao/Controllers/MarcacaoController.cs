@@ -61,7 +61,7 @@ namespace AgendaClinicaVivaEstetica.Apresentacao.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Editar(Guid id, [Bind("Marcacao")] MarcacaoViewModel marcacaoViewModel)
+        public async Task<IActionResult> Editar(Guid id, [Bind("Marcacao,EnumTipoServico")] MarcacaoViewModel marcacaoViewModel)
         {
             if (id != marcacaoViewModel.Marcacao.IdMarcacao)
                 NotFound();
@@ -99,7 +99,7 @@ namespace AgendaClinicaVivaEstetica.Apresentacao.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Agendar([Bind("Marcacao")] MarcacaoViewModel marcacaoViewModel)
+        public async Task<IActionResult> Agendar([Bind("Marcacao,EnumTipoServico")] MarcacaoViewModel marcacaoViewModel)
         {
             if (!ModelState.IsValid)
             {

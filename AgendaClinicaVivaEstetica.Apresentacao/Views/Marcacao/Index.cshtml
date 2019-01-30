@@ -16,6 +16,9 @@
                 Data da marcação
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.EnumTipoServico)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Clientes)
             </th>
             <th></th>
@@ -26,6 +29,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Marcacao.DataMarcacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnumTipoServico)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Marcacao.Cliente.Nome)

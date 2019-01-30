@@ -24,6 +24,11 @@
                 <a class="btn btn-primary" asp-controller="Cliente" asp-action="Cadastrar">Cadastrar novo cliente</a>
             </div>
             <div class="form-group">
+                <label asp-for="EnumTipoServico" class="control-label"></label>
+                @Html.DropDownListFor(model => model.EnumTipoServico, Html.GetEnumSelectList(typeof(EnumTipoServico)), new { @class = "form-control" })
+                <span asp-validation-for="EnumTipoServico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label class="control-label">Data da marcação</label>
                 <input asp-for="Marcacao.DataMarcacao" class="form-control" />
                 <span asp-validation-for="Marcacao.DataMarcacao" class="text-danger"></span>

@@ -1,4 +1,5 @@
-﻿using AgendaClinicaVivaEstetica.Dominio.Excecoes;
+﻿using AgendaClinicaVivaEstetica.Dominio.Enumeradores;
+using AgendaClinicaVivaEstetica.Dominio.Excecoes;
 using AgendaClinicaVivaEstetica.Dominio.Mensagens;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -9,16 +10,19 @@ namespace AgendaClinicaVivaEstetica.Dominio.Entidades
     {
         public Marcacao() { }
 
-        public Marcacao(DateTime dataMarcacao, Cliente cliente)
+        public Marcacao(DateTime dataMarcacao, Cliente cliente, EnumTipoServico enumTipoServico)
         {
             DataMarcacao = dataMarcacao;
             Cliente = new Cliente(cliente.Nome, cliente.Sobrenome, cliente.Documento, cliente.Celular, cliente.Endereco);
+            EnumTipoServico = enumTipoServico;
         }
 
         [Key]
         public Guid IdMarcacao { get; set; }
 
         public DateTime DataMarcacao { get; set; }
+
+        public EnumTipoServico EnumTipoServico { get; set; }
 
         public Guid IdCliente { get; set; }
 

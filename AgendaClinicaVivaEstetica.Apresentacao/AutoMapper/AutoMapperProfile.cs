@@ -21,6 +21,7 @@ namespace AgendaClinicaVivaEstetica.Apresentacao.AutoMapper
                 .ReverseMap();
 
             CreateMap<Marcacao, MarcacaoViewModel>()
+                .ForMember(x=> x.EnumTipoServico, y=> y.MapFrom(z=> z.EnumTipoServico))
                 .ForPath(x => x.Marcacao.DataMarcacao, y => y.MapFrom(z => z.DataMarcacao))
                 .ForPath(x => x.Marcacao.IdMarcacao, y => y.MapFrom(z => z.IdMarcacao))
                 .ForPath(x => x.Marcacao.IdCliente, y => y.MapFrom(z => z.IdCliente))

@@ -1,4 +1,5 @@
 ﻿using AgendaClinicaVivaEstetica.Dominio.Entidades;
+using AgendaClinicaVivaEstetica.Dominio.Enumeradores;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,7 +15,9 @@ namespace AgendaClinicaVivaEstetica.Apresentacao.Models
 
         public Marcacao Marcacao { get; set; }
 
-        [Required(ErrorMessage = ("Cliente deve ser selecionado."))]
         public IEnumerable<Cliente> Clientes { get; set; }
+
+        [Display(Name =" Tipo de serviço")]
+        public EnumTipoServico EnumTipoServico { get; set; }
     }
 }
