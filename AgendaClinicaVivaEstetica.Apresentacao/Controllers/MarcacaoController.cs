@@ -1,5 +1,6 @@
 ﻿using AgendaClinicaVivaEstetica.Apresentacao.Models;
 using AgendaClinicaVivaEstetica.Dominio.Entidades;
+using AgendaClinicaVivaEstetica.Dominio.Enumeradores;
 using AgendaClinicaVivaEstetica.Dominio.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -73,7 +74,7 @@ namespace AgendaClinicaVivaEstetica.Apresentacao.Controllers
             {
                 var marcacao = _mapper.Map<Marcacao>(marcacaoViewModel);
 
-                marcacao.Validacao();
+                marcacao.Validacao(EnumTipoSolicitacao.Alteracao);
 
                 await _repositorioMarcacao.Alterar(marcacao);
 
@@ -111,7 +112,7 @@ namespace AgendaClinicaVivaEstetica.Apresentacao.Controllers
             {
                 var marcacao = _mapper.Map<Marcacao>(marcacaoViewModel);
 
-                marcacao.Validacao();
+                marcacao.Validacao(EnumTipoSolicitacao.Inclusao);
 
                 await _repositorioMarcacao.SalvarAsync(marcacao);
 
@@ -146,9 +147,21 @@ namespace AgendaClinicaVivaEstetica.Apresentacao.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmarApagar(Guid id)
         {
-            await _repositorioMarcacao.ApagarPorId(id);
+            try
+            {
+                var marcacao = await _repositorioMarcacao.BuscarPorIdAsync(id);
 
-            return RedirectToAction(nameof(Index));
+                marcacao.Validacao(EnumTipoSolicitacao.Exclusao);
+
+                await _repositorioMarcacao.ApagarPorId(marcacao.IdMarcacao);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message.ToString());
+                return RedirectToAction(nameof(Apagar));
+            }
         }
 
         private async Task<MarcacaoViewModel> BuscarComClientePorIdAsync(Guid id)

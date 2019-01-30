@@ -137,4 +137,12 @@
     <value>O campo celular é de preenchimento obrigatório.</value>
     <comment>Campo celular</comment>
   </data>
+  <data name="MSG0006" xml:space="preserve">
+    <value>Serviço só pode ser reagendado/cancelado com até 1 dia de antecedência.</value>
+    <comment>Mensagem 1 dia antecedência</comment>
+  </data>
+  <data name="MSG0007" xml:space="preserve">
+    <value>Massagem só pode ser reagendado/cancelado com 24 horas de antecedência.</value>
+    <comment>Massagem 24 horas antecedência</comment>
+  </data>
 </root>

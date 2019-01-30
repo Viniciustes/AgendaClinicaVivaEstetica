@@ -123,5 +123,27 @@ namespace AgendaClinicaVivaEstetica.Dominio.Mensagens
                 return ResourceManager.GetString("MSG0005", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Serviço só pode ser reagendado/cancelado com até 1 dia de antecedência..
+        /// </summary>
+        public static string MSG0006
+        {
+            get
+            {
+                return ResourceManager.GetString("MSG0006", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Massagem só pode ser reagendado/cancelado com 24 horas de antecedência..
+        /// </summary>
+        public static string MSG0007
+        {
+            get
+            {
+                return ResourceManager.GetString("MSG0007", resourceCulture);
+            }
+        }
     }
 }

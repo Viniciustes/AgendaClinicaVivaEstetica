@@ -25,23 +25,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Marcacao.DataMarcacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnumTipoServico)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Marcacao.Cliente.Nome)
-            </td>
-            <td>
-                <a asp-action="Editar" asp-route-id="@item.Marcacao.IdMarcacao">Editar</a> |
-                <a asp-action="Detalhar" asp-route-id="@item.Marcacao.IdMarcacao">Detalhar</a> |
-                <a asp-action="Apagar" asp-route-id="@item.Marcacao.IdMarcacao">Apagar</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marcacao.DataMarcacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnumTipoServico)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marcacao.Cliente.Nome)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.Marcacao.IdMarcacao">Reagendar</a> |
+                    <a asp-action="Detalhar" asp-route-id="@item.Marcacao.IdMarcacao">Detalhar</a> |
+                    <a asp-action="Apagar" asp-route-id="@item.Marcacao.IdMarcacao">Cancelar </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
